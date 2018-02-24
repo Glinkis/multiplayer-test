@@ -2,25 +2,14 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "allowJs": true,
     "checkJs": true,
     "sourceMap": true,
     "strict": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "types": [
-      "node",
-      "mocha",
-      "chai"
-    ]
+    "types": ["node", "mocha", "chai"]
   },
-  "exclude": [
-    "node_modules",
-    "dist-client",
-    "dist-server",
-  ]
+  "exclude": ["node_modules", "dist-client", "dist-server"]
 }

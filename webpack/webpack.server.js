@@ -23,5 +23,5 @@ module.exports = {
   resolve: {
     modules: ["node_modules"],
     extensions: [".js", ".json", ".ts"]
-  },
+  }
 };

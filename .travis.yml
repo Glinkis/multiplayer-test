@@ -8,3 +8,4 @@ node_js:
   - node
 script:
   - npm run test && npm run build:client && npm run build:server
+  

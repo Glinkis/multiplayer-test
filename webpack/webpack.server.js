@@ -2,8 +2,6 @@
 
 const path = require("path");
 const webpack = require("webpack");
-// @ts-ignore
-const nodeExternals = require('webpack-node-externals');
 const loaders = require("./loaders");
 
 module.exports = {
@@ -19,7 +17,9 @@ module.exports = {
   module: {
     rules: [loaders.ts]
   },
-  externals: [nodeExternals()],
+  externals: [
+    /^[a-z\-0-9]+$/ // Ignore node_modules folder
+  ],
   resolve: {
     modules: ["node_modules"],
     extensions: [".js", ".json", ".ts"]

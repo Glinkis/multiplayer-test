@@ -2,7 +2,7 @@ import { Express } from "express";
 import * as webpack from "webpack";
 import * as webpackDevMiddleware from "webpack-dev-middleware";
 import * as webpackHotMiddleware from "webpack-hot-middleware";
-import * as config from "../../webpack/webpack.config.js";
+import * as config from "../../../webpack/webpack.config.js";
 
 export function serveWebpack(server: Express, htmlFile: string) {
   const compiler = webpack(config as webpack.Configuration);

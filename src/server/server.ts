@@ -1,16 +1,19 @@
 import * as express from "express";
+import { createServer } from "http";
 import * as path from "path";
-import { serveStatic } from "./serveStatic";
-import { serveWebpack } from "./serveWebpack";
+import * as socketio from "socket.io";
+import serve from "./serve";
 
-const DIST_DIR = path.join(__dirname, "../../dist-client");
-const HTML_FILE = path.join(DIST_DIR, "index.html");
-const server = express();
+const server = serve(express());
+const http = createServer(server);
+const io = socketio(http);
 
-if (process.env.NODE_ENV !== "production") {
-  serveWebpack(server, HTML_FILE);
-} else {
-  serveStatic(server, DIST_DIR, HTML_FILE);
-}
+io.on("connection", socket => {
+  console.log(socket.id, "connected.");
+  socket.emit("connection", "You have been assigned the id " + socket.id);
+  socket.on("disconnect", () => {
+    console.log(socket.id, "disconnected.");
+  });
+});
 
-server.listen(3000);
+http.listen(3000);

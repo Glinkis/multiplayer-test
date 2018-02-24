@@ -2,24 +2,26 @@
 
 const path = require("path");
 const webpack = require("webpack");
+// @ts-ignore
+const nodeExternals = require('webpack-node-externals');
 const loaders = require("./loaders");
-const plugins = require("./plugins");
 
 module.exports = {
   context: __dirname,
-  entry: "../src/client/client.ts",
+  entry: "../src/server/server.ts",
   output: {
-    path: path.join(__dirname, "../", "dist-client"),
+    path: path.join(__dirname, "../", "dist-server"),
     publicPath: "/",
     filename: "[name].bundle.js"
   },
+  target: "node",
   devtool: "sourcemap",
   module: {
     rules: [loaders.ts]
   },
+  externals: [nodeExternals()],
   resolve: {
     modules: ["node_modules"],
     extensions: [".js", ".json", ".ts"]
   },
-  plugins: plugins
 };

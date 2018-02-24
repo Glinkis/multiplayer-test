@@ -11,10 +11,16 @@
     "sourceMap": true,
     "strict": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "types": [
+      "node",
+      "mocha",
+      "chai"
+    ]
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "dist-client",
+    "dist-server",
   ]
 }

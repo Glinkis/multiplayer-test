@@ -3,7 +3,7 @@ import * as path from "path";
 import { serveStatic } from "./serveStatic";
 import { serveWebpack } from "./serveWebpack";
 
-const DIST_DIR = path.join(__dirname, "../../dist");
+const DIST_DIR = path.join(__dirname, "../../dist-client");
 const HTML_FILE = path.join(DIST_DIR, "index.html");
 const server = express();
 

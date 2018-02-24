@@ -4,7 +4,8 @@
   "scripts": {
     "start": "ts-node src/server/server.ts",
     "start:prod": "cross-env NODE_ENV=production ts-node src/server/server.ts",
-    "build": "rimraf dist & webpack --config webpack/webpack.config.js -p",
+    "build:client": "rimraf dist-client & webpack --config webpack/webpack.config.js -p",
+    "build:server": "rimraf dist-server & webpack --config webpack/webpack.server.js",
     "test": "mocha --require ts-node/register \"src/**/*.test.ts\"",
     "test:watch": "npm run test -- --watch",
     "prettify": "prettier --write \"src/**/*\" \"webpack/**/*\""
@@ -47,6 +48,7 @@
     "webpack": "^3.11.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "^2.21.0",
+    "webpack-node-externals": "^1.6.0",
     "webpack-split-by-path": "^2.0.0"
   }
 }

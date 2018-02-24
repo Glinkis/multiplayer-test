@@ -13,10 +13,12 @@ const basePlugins = [
     __PRODUCTION__: process.env.NODE_ENV === "production",
     "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
   }),
-  new SplitByPathPlugin([{
-    name: "vendor",
-    path: path.join(__dirname, "/../", "node_modules")
-  }]),
+  new SplitByPathPlugin([
+    {
+      name: "vendor",
+      path: path.join(__dirname, "/../", "node_modules")
+    }
+  ]),
   new HtmlWebpackPlugin({
     title: "multiplayer-test",
     hash: true,

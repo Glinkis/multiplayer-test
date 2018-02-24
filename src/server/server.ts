@@ -1,10 +1,16 @@
 import * as express from "express";
-import * as io from "socket.io";
+import * as path from "path";
+import { serveStatic } from "./serveStatic";
+import { serveWebpack } from "./serveWebpack";
 
-const app = express();
+const DIST_DIR = path.join(__dirname, "../../dist");
+const HTML_FILE = path.join(DIST_DIR, "index.html");
+const server = express();
 
-app.get("/", (req: any, res: any) => {
-  res.send("Hello World");
-});
+if (process.env.NODE_ENV !== "production") {
+  serveWebpack(server, HTML_FILE);
+} else {
+  serveStatic(server, DIST_DIR, HTML_FILE);
+}
 
-app.listen(3000);
+server.listen(3000);
